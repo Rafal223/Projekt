@@ -1,24 +1,20 @@
 <html>
     <head>
-        <link rel="stylesheet" href="style/styl.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <center><div class="d1">
+        <center>
     <?php
+        echo '<div class="blokGlownyDuzy"><h1>Wypożyczalnia Filmów</h1>';
         session_start();
-        echo 'Zalogowany jako: '.$_SESSION["login"].'<h3>Książki to moja pasja wypożycz albo wjazd na chate masz elo</h3>';
-
-        echo '<a href="index.php">Wyloguj</a>';
-        echo '<a href="twoje.php?page=1">Twoje oferty</a>';
-        echo '<a href="koszyk.php?page=1">Koszyk</a>';
-        echo '<a href="dodawanie.php">Wystaw</a>';
 
         $con = new mysqli("127.0.0.1","root","","Projekt");
         echo '<form method="POST">';
-        $res = $con->query("SELECT * FROM user");
+        $res = $con->query("SELECT * FROM film");
         $cos = $res->fetch_all();
 
-        echo '<div class="srodek">';
+        $res1 = $con->query("SELECT * FROM user");
+        $cos1 = $res1->fetch_all();
 
         $offset=($_GET['page']-1)*10;
         $cos2 = $con->query("SELECT * FROM film LIMIT 10 OFFSET ".$offset."");
@@ -26,16 +22,18 @@
 
         for($i = 0; $i<count($cos22);$i++)
         {
-            echo '<div class="blok">item: '.$cos22[$i][1].', Sprzedający: '.$cos1[$cos22[$i][3]][1].'<br>opis: '.$cos22[$i][2].'<a href="szczegol.php?id='.$i.'">Szczegóły</a> </div>';
+            echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].', Opis: '.$cos22[$i][2].'<br>Typ: '.$cos22[$i][3].'<a href="szczegol.php?id='.$i.'">Szczegóły</a></div><div class="lewy">   </div></div>';
         }
-        echo '<br>';
+        echo '<br><div class="dol">';
         $ile = (count($cos)/10)+1;
         for($i = 1; $i<$ile; $i++)
         {
-            echo '<a class="dwa" href="strona.php?page='.$i.'">'.$i.'</a>';
+            echo '<a class="przycisk" href="index.php?page='.$i.'">'.$i.'</a>';
         }
         echo '</div></form>';
+
+        echo '</div>';
     ?>
-        </div></center>
+        </center>
     </body>
 </html>

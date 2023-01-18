@@ -1,8 +1,10 @@
 <html>
     <head>
-    <link rel="stylesheet" href="styl.css">
+    <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
+        <center>
+        <div class="blokGlowny">
     <?php
         session_start();
         $con = new mysqli("127.0.0.1","root","","Projekt");
@@ -10,12 +12,14 @@
         $res = $con->query("SELECT * FROM user");
         $cos = $res->fetch_all();
 
-        echo '<center><div class="d1"><h1>Logowanie:</h1><br> Email: <input name="email"><br> Haslo: <input name="password" type="password"><br>';
+        echo '<h1>Logowanie:</h1>
+        <section class="box"><br> Email: <input name="email"></section>
+        <section class="box"><br> Haslo: <input name="password" type="password"><br></section>';
         if($_POST!=NULL)
         {
             for($i=0;$i<count($cos);$i++)
             {
-                if($_POST['email']==$cos[$i][1] && $_POST['password']==$cos[$i][2])
+                if($_POST['email']==$cos[$i][4] && $_POST['password']==$cos[$i][3])
                 {
                     $_SESSION["email"] = $_POST['email'];
                     $_SESSION["id"] = $i;
@@ -24,9 +28,10 @@
                 }
             }
         }
-        echo '<div class="trzy"><a href="register.php">Rejestracja</a><input type="submit"></div></center></div>';
+        echo '<section class="box"><a href="register.php">Rejestracja</a><br><input type="submit"></section>';
         echo '</form>';
     ?>
-
+        </div>
+        </center>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <html>
     <head>
-    <link rel="stylesheet" href="styl.css">
+    <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
     <?php
@@ -9,11 +9,11 @@
         $res = $con->query("SELECT * FROM user");
         $cos = $res->fetch_all();
 
-        echo '<center><div class="d1"><h1>Rejestracja:</h1>
-        <br> Imię: <input name="imie">
-        <br> Nazwisko: <input name="nazwisko">
-        <br> Email: <input name="email">
-        <br> Hasło: <input name="password" type="password"><br>';
+        echo '<center><div class="blokGlowny"><h1>Rejestracja:</h1>
+        <section class="box"><br> Imię: <input name="imie"></section>
+        <section class="box"><br> Nazwisko: <input name="nazwisko"></section>
+        <section class="box"><br> Email: <input name="email"></section>
+        <section class="box"><br> Hasło: <input name="password" type="password"><br></section>';
         if($_POST!=NULL)
         {
             if($_POST['email']!="" && $_POST['password']!="")
@@ -23,7 +23,7 @@
                 header('location: login.php');
             }
         }
-        echo '<a href="login.php">Logowanie</a><input type="submit"></center></div>';
+        echo '<section class="box"><a href="login.php">Logowanie</a><br><input type="submit"></center></section></div>';
         echo '</form>';
     ?>
 
