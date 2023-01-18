@@ -1,0 +1,39 @@
+1. Normalizacja baz danych
+
+Normalizacja baz danych jest procesem, który polega na strukturyzacji bazodanowej, a dotyczy zwykle relacyjnych baz danych. Ma związek z wykorzystaniem tak zwanych postaci normalnych, których celem jest zmniejszenie nadmiarowości danych oraz wsparcie ich integralności. (mniej lagów wiecej przestrzeni dla danych)
+
+2. Na czym polega normalizacja baz danych?
+
+Proces ten pozwala projektować, jak również organizować każdą kolumnę (atrybuty) oraz tabelę (relacje) konkretnej bazy. Celem rozbudowanych działań normalizacyjnych jest także zapewnienie poprawnego wymuszania zależności pomiędzy nimi bez zbędnej redundancji.
+
+Po co stosować normalizację relacyjnych baz danych?
+
+Gromadzenie nadmiarowych danych przyczynia się do marnowania przestrzeni dyskowej oraz kłopotów z wydajnością. Jeżeli zmieniamy dane w jednym miejscu, muszą one zostać zmienione w ten sam sposób w innych lokalizacjach.
+
+Pierwsza postać normalna 1NF
+
+Wśród najważniejszych czynników określających zasadę działania tej reguły, należy wymienić:
+
+    - Usunięcie powtarzających się grup w ramach pojedynczych tabel.
+    - Tworzenie oddzielnej tabeli dla pojedynczego zestawu danych relacyjnych.
+    - Określenie każdego z zestawów dzięki kluczowi podstawowemu.
+
+Druga postać normalna 2NF
+
+Wprowadzenie drugiej formy normalnej ma na celu przede wszystkim:
+
+    - Budowę osobnych tabel dla zestawów wartości powiązanych z wieloma zapisami.
+    - Ustalenie relacji pomiędzy tabelami przy użyciu klucza obcego.
+
+Trzecia postać normalna 3NF
+
+Głównym celem implementacji tej formy w swojej relacyjnej bazie danych jest:
+
+    Usunięcie pół, które nie zależą od klucza - jeżeli wartości zapisu nie stanowią części klucza rekordu, wówczas nie powinny się tam znajdować.
+
+Pierwsze trzy reguły (spośród jedenastu obecnie opracowanych) przydają się między innymi do walki z następującymi problemami:
+
+- wpływa negatywnie na przestrzeń dyskową oraz ją zaśmieca,
+- zmiana w wierszach występuje kilkukrotnie,
+- Kolumny zawierają niepotrzebne kolekcje wartości przez co ciężko jest wpisać w nie dane,
+- Przypadkowa utrata danych.
