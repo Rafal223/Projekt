@@ -7,6 +7,7 @@
     <?php
         include "./includes/header.php";
 
+        echo '<form method="POST">';
         if($_SESSION["email"])
         {
             echo '<div class="blokGlownyDuzy"><h1>Wypożyczalnia Filmów</h1> Zalogowany Jako: '.$_SESSION["email"].'<br>';
@@ -19,11 +20,14 @@
             <a href="sites/login.php">Zaloguj sie</a>
             <a href="sites/register.php">Zarejestruj sie</a>';
         }
-        
-        echo '</div>';
+        echo '<input name="search"><input type="submit"></div>';
 
+        if($_POST!=null)
+        {
+            $_SESSION["search"]=$_POST["search"];
+            header("Location: sites/movie-search.php?page=1");
+        }
         $con = new mysqli("127.0.0.1","root","","projekt");
-        echo '<form method="POST">';
         $res = $con->query("SELECT * FROM film");
         $cos = $res->fetch_all();
 
@@ -46,7 +50,14 @@
         }
         echo '</div></form>';
 
-        echo '</div>';
+        echo '</div><a href="admin/logout.php">Administrator</a>';
+        if($_SESSION["id"])
+        {
+            if($cos1[$_SESSION["id"]][5]==1)
+            {
+                echo '<br>panel admina<br> <a href="admin/add-admin.php">Dodaj nowego Administratora</a><a href="admin/movie-details.php">Szczegóły filmów</a><a href="admin/movie-list.php">Lista Wszystkich Filmów</a>';
+            }
+        }
     ?>
         </center>
     </body>

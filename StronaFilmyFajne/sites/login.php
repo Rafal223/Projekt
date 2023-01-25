@@ -19,7 +19,7 @@
         {
             for($i=0;$i<count($cos);$i++)
             {
-                if($_POST['email']==$cos[$i][4] && $_POST['password']==$cos[$i][3])
+                if($_POST['email']==$cos[$i][4] && $_POST['password']==$cos[$i][3] && $cos[$i][5]==0)
                 {
                     $_SESSION["email"] = $_POST['email'];
                     $_SESSION["id"] = $i;
