@@ -23,7 +23,7 @@
                 header('location: login.php');
             }
         }
-        echo '<section class="box"><a href="login.php">Logowanie</a><br><input type="submit"></center></section></div>';
+        echo '<section class="box"><br><input type="submit"></section><a href="login.php">Logowanie</a><br><br><a href="../index.php?page=1">Strona Główna</a</div></center>';
         echo '</form>';
     ?>
 

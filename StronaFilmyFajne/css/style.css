@@ -34,23 +34,51 @@ a
     text-decoration: none;
     outline: 2px black solid;
     background-color: yellow;
-    margin: 5px;
 }
 .blok
 {
     outline: 2px green solid;
-    height: 100px;
+    height: 200px;
     width: 80%;
 }
 .lewy
 {
     width: 50%;
     float: left;
+    text-align: left;
+    height: 85%;
+}
+.lewydol
+{
+    height: 10%;
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+.prawy
+{
+    width: 50%;
+    float: right;
+    text-align: left;
+    height: 100%;
 }
 .dol
 {
     background: none;
     background-color: white;
-    box-shadow: 2px black;
-    outline: 3px yellow solid;
+    height: 50px;
+}
+.panel
+{
+    height: 100px;
+    width: 100%;
+}
+.panel a
+{
+    text-decoration: none;
+}
+.details
+{
+    padding: 15px;
+    text-align: left;
 }

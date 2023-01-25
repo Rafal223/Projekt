@@ -6,7 +6,7 @@
         <center>
         <div class="blokGlowny">
     <?php
-        session_start();
+        include "../includes/header.php";
         $con = new mysqli("127.0.0.1","root","","Projekt");
         echo '<form method="POST">';
         $res = $con->query("SELECT * FROM user");
@@ -28,7 +28,7 @@
                 }
             }
         }
-        echo '<section class="box"><a href="register.php">Rejestracja</a><br><input type="submit"></section>';
+        echo '<section class="box"><input type="submit"></section><a href="register.php">Rejestracja</a><br><br><a href="../index.php?page=1">Strona Główna</a>';
         echo '</form>';
     ?>
         </div>
