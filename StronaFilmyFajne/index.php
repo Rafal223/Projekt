@@ -12,7 +12,9 @@
         {
             echo '<div class="blokGlownyDuzy"><h1>Wypożyczalnia Filmów</h1> Zalogowany Jako: '.$_SESSION["email"].'<br>';
             echo '<div class="panel">
-            <a href="sites/logout.php">Wyloguj sie</a>';
+            <a href="sites/logout.php">Wyloguj sie</a>
+            <a href="sites/movie-add.php">Dodaj film</a>
+            <a href="sites/movie-my.php?page=1">Moje Filmy</a>';
         }else
         {
             echo '<div class="blokGlownyDuzy"><h1>Wypożyczalnia Filmów</h1>';
@@ -40,8 +42,19 @@
 
         for($i = 0; $i<count($cos22);$i++)
         {
-            echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].'<br>Typ: '.$cos22[$i][3].'<br> Opis: '.$cos22[$i][2].'<br></div><div class="prawy">foto</div><div class="lewydol"><a href="sites/movie-details.php?id='.$i.'">Szczegóły</a></div></div><br>';
+            echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].'<br>Typ: '.$cos22[$i][3].'<br> Opis: '.$cos22[$i][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
+            if($_SESSION["admin"]==null)
+            {
+               echo '<a href="sites/movie-details.php?id='.$i.'">Szczegóły</a>';
+            }
+            if($_SESSION["admin"]==1)
+            {
+                echo '<a href="sites/movie-details.php?id='.$i.'">Podgląd</a>';
+                echo '<a href="admin/movie-details.php?id='.$i.'">Szczegóły administratora</a>';
+            }
+            echo '</div></div><br>';
         }
+
         echo '<br><div class="dol">';
         $ile = (count($cos)/10)+1;
         for($i = 1; $i<$ile; $i++)
@@ -55,7 +68,7 @@
         {
             if($cos1[$_SESSION["id"]][5]==1)
             {
-                echo '<br>panel admina<br> <a href="admin/add-admin.php">Dodaj nowego Administratora</a><a href="admin/movie-details.php">Szczegóły filmów</a><a href="admin/movie-list.php">Lista Wszystkich Filmów</a>';
+                echo '<br>panel admina<br> <a href="admin/add-admin.php">Dodaj nowego Administratora</a><a href="admin/movie-list.php?page=1">Lista Wszystkich Filmów</a>';
             }
         }
     ?>
