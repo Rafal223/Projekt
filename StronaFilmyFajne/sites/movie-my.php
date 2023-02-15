@@ -36,13 +36,17 @@
         $res1 = $con->query("SELECT * FROM user");
         $cos1 = $res1->fetch_all();
 
+        $res12 = $con->query("SELECT * FROM user_has_film");
+        $cos12 = $res12->fetch_all();
+
         $offset=($_GET['page']-1)*10;
         $cos2 = $con->query("SELECT * FROM film LIMIT 10 OFFSET ".$offset."");
         $cos22 = $cos2->fetch_all();
 
         for($i = 0; $i<count($cos22);$i++)
         {
-            if($cos22[])
+            if($_SESSION["id"]==$cos12[0])
+            {
             echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].'<br>Typ: '.$cos22[$i][3].'<br> Opis: '.$cos22[$i][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
             if($_SESSION["admin"]==null)
             {
@@ -52,6 +56,7 @@
             {
                 echo '<a href="sites/movie-details.php?id='.$i.'">Podgląd</a>';
                 echo '<a href="admin/movie-details.php?id='.$i.'">Szczegóły administratora</a>';
+            }
             }
             echo '</div></div><br>';
         }
