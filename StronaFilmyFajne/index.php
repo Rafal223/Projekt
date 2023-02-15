@@ -6,7 +6,11 @@
         <center>
     <?php
         include "./includes/header.php";
-
+        if($_GET==null)
+        {
+            header("Location: index.php?page=1");
+            include "includes/nav.php";
+        }
         echo '<form method="POST">';
         if($_SESSION["email"])
         {

@@ -26,8 +26,12 @@
             print_r($_POST);
             if($_POST["nazwa"]!="" && $_POST["typ"]!="" && $_POST["opis"]!="")
             {
-                $sqlquery = "INSERT INTO `film` VALUES ('".count($cos1)."', '".$_POST['nazwa']."', '".$_POST['opis']."','".$_POST['typ']."');";
+                $liczba = count($cos);
+                $sqlquery = "INSERT INTO `film` VALUES ('".$liczba."', '".$_POST['nazwa']."', '".$_POST['opis']."','".$_POST['typ']."');";
                 $con->query($sqlquery);
+
+                $sqlquery2 = "INSERT INTO `user_has_film` VALUES ('".$_SESSION["id"]."','".$liczba."');";
+                $con->query($sqlquery2);
                 header('location: ../index.php?page=1');
             }
         }

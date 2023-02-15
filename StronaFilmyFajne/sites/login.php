@@ -23,7 +23,7 @@
                 {
                     $_SESSION["email"] = $_POST['email'];
                     $_SESSION["id"] = $i;
-                    $_SESSION["admin"]=0;
+                    $_SESSION["admin"] = 0;
                     echo 'udalo sie zalogowac';
                     header("Location: ../index.php?page=1");
                 }
