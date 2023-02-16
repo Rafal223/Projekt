@@ -11,6 +11,9 @@
             header("Location: index.php?page=1");
             include "includes/nav.php";
         }
+        $res1 = $con->query("SELECT * FROM user");
+        $cos1 = $res1->fetch_all();
+
         echo '<form method="POST">';
         if($_SESSION["email"])
         {
@@ -33,12 +36,8 @@
             $_SESSION["search"]=$_POST["search"];
             header("Location: sites/movie-search.php?page=1");
         }
-        $con = new mysqli("127.0.0.1","root","","projekt");
         $res = $con->query("SELECT * FROM film");
         $cos = $res->fetch_all();
-
-        $res1 = $con->query("SELECT * FROM user");
-        $cos1 = $res1->fetch_all();
 
         $offset=($_GET['page']-1)*10;
         $cos2 = $con->query("SELECT * FROM film LIMIT 10 OFFSET ".$offset."");
@@ -68,12 +67,12 @@
         echo '</div></form>';
 
         echo '</div><a href="admin/logout.php">Administrator</a>';
-        if($_SESSION["id"])
+        if($_SESSION["admin"])
         {
-            if($cos1[$_SESSION["id"]][5]==1)
-            {
-                echo '<br>panel admina<br> <a href="admin/add-admin.php">Dodaj nowego Administratora</a><a href="admin/movie-list.php?page=1">Lista Wszystkich Filmów</a>';
-            }
+        if($_SESSION["admin"]==1)
+        {
+            echo '<br>panel admina<br> <a href="admin/add-admin.php">Dodaj nowego Administratora</a><a href="admin/movie-list.php?page=1">Lista Wszystkich Filmów</a>';
+        }
         }
     ?>
         </center>

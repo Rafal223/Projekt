@@ -13,9 +13,9 @@
         $cos = $res->fetch_all();
 
         echo '<h1>Dodaj film:</h1>
-        <div class="details">Nazwa: <input name="nazwa" value=""><br>
-        Typ: <input name="typ" value=""><br>
-        Opis: <input name="opis" value=""><br>
+        <div class="details">Nazwa: <input name="nazwa"><br>
+        Typ: <input name="typ"><br>
+        Opis: <input name="opis"><br>
         foto </div>';
         echo '<input type="submit">';
         echo '<br><a href="../index.php?page=1">Strona Główna</a>';
@@ -27,6 +27,7 @@
             if($_POST["nazwa"]!="" && $_POST["typ"]!="" && $_POST["opis"]!="")
             {
                 $liczba = count($cos);
+                print_r($liczba);
                 $sqlquery = "INSERT INTO `film` VALUES ('".$liczba."', '".$_POST['nazwa']."', '".$_POST['opis']."','".$_POST['typ']."');";
                 $con->query($sqlquery);
 

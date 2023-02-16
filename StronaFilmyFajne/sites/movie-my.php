@@ -12,7 +12,7 @@
         {
             echo '<div class="blokGlownyDuzy"><h1>Wypożyczalnia Filmów</h1> Zalogowany Jako: '.$_SESSION["email"].'<br>';
             echo '<div class="panel">
-            <a href="sites/logout.php">Wyloguj sie</a>
+            <a href="../sites/logout.php">Wyloguj sie</a>
             <a href="../index.php?page=1">Strona Glowna</a>
             <a href="movie-add.php">Dodaj film</a>';
         }else
@@ -43,40 +43,30 @@
         $cos2 = $con->query("SELECT * FROM film LIMIT 10 OFFSET ".$offset."");
         $cos22 = $cos2->fetch_all();
 
-        for($i = 0; $i<count($cos22);$i++)
+        for($i = 0; $i<count($cos12);$i++)
         {
-            if($_SESSION["id"]==$cos12[0])
+            if($_SESSION["id"]==$cos12[$i][0])
             {
-            echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].'<br>Typ: '.$cos22[$i][3].'<br> Opis: '.$cos22[$i][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
-            if($_SESSION["admin"]==null)
-            {
-               echo '<a href="sites/movie-details.php?id='.$i.'">Szczegóły</a>';
+            echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$cos12[$i][1]][1].'<br>Typ: '.$cos22[$cos12[$i][1]][3].'<br> Opis: '.$cos22[$cos12[$i][1]][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
+                if($_SESSION["admin"]==null)
+                {
+                   echo '<a href="sites/movie-details.php?id='.$i.'">Szczegóły</a>';
+                }
+                if($_SESSION["admin"]==1)
+                {
+                    echo '<a href="sites/movie-details.php?id='.$i.'">Podgląd</a>';
+                    echo '<a href="admin/movie-details.php?id='.$i.'">Szczegóły administratora</a>';
+                }
+                echo '</div></div><br>';
             }
-            if($_SESSION["admin"]==1)
-            {
-                echo '<a href="sites/movie-details.php?id='.$i.'">Podgląd</a>';
-                echo '<a href="admin/movie-details.php?id='.$i.'">Szczegóły administratora</a>';
-            }
-            }
-            echo '</div></div><br>';
         }
-
         echo '<br><div class="dol">';
         $ile = (count($cos)/10)+1;
         for($i = 1; $i<$ile; $i++)
         {
-            echo '<a href="index.php?page='.$i.'">'.$i.'</a>';
+            echo '<a href="movie-my.php?page='.$i.'">'.$i.'</a>';
         }
         echo '</div></form>';
-
-        echo '</div><a href="admin/logout.php">Administrator</a>';
-        if($_SESSION["id"])
-        {
-            if($cos1[$_SESSION["id"]][5]==1)
-            {
-                echo '<br>panel admina<br> <a href="admin/add-admin.php">Dodaj nowego Administratora</a><a href="admin/movie-list.php?page=1">Lista Wszystkich Filmów</a>';
-            }
-        }
     ?>
         </center>
     </body>
