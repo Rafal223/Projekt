@@ -24,7 +24,7 @@
         {
             if($_POST["nazwa"]!="" && $_POST["typ"]!="" && $_POST["opis"]!="")
             {
-                $sqlquery = "INSERT INTO `film` VALUES ('NULL','".$_POST['nazwa']."', '".$_POST['opis']."','".$_POST['typ']."');";
+                $sqlquery = "INSERT INTO `film` VALUES ('NULL','".$_POST['nazwa']."', '".$_POST['opis']."','".$_POST['typ']."','0');";
                 $con->query($sqlquery);
                 $wartosc=$con->insert_id;
 

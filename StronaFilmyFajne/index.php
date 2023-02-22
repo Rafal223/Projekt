@@ -45,6 +45,8 @@
 
         for($i = 0; $i<count($cos22);$i++)
         {
+            if($cos22[$i][4]==1)
+            {
             echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].'<br>Typ: '.$cos22[$i][3].'<br> Opis: '.$cos22[$i][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
             if($_SESSION["admin"]==null)
             {
@@ -56,6 +58,7 @@
                 echo '<a href="admin/movie-details.php?id='.$i.'">Szczegóły administratora</a>';
             }
             echo '</div></div><br>';
+            }
         }
 
         echo '<br><div class="dol">';

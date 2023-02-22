@@ -19,6 +19,7 @@
         foto </div>';
         echo '<br><a href="../index.php?page=1">Strona Główna</a>';
         echo '<br><br><input name="1" type="submit" value="usun"></a>';
+        echo '<br><br><input name="1" type="submit" value="ukryj"></a>';
         
         if($_POST!=null)
             {
@@ -30,6 +31,11 @@
                 $sqlquery = "DELETE FROM `film` WHERE `film`.`id` = ".$cos[$_GET["id"]][0]."";
                 $con->query($sqlquery);
                 header('location: ../index.php?page=1');
+            }
+            if($_POST["1"]=="ukryj")
+            {
+                $sqlquery3 = "UPDATE `film` SET `widocznosc` = 0 WHERE `film`.`id` = ".$_GET["id"].";";
+                $con->query($sqlquery3);
             }
         }
         echo '</form>';

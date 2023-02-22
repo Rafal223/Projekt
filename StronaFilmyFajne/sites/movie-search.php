@@ -25,6 +25,12 @@
         $res = $con->query("SELECT * FROM film");
         $cos = $res->fetch_all();
 
+        if($_POST!=null)
+        {
+            $_SESSION["search"]=$_POST["search"];
+            header("Location: movie-search.php?page=1");
+        }
+
         $res1 = $con->query("SELECT * FROM user");
         $cos1 = $res1->fetch_all();
 

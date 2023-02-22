@@ -6,6 +6,7 @@
         <center>
     <?php
         include "../includes/header.php";
+        echo '<form method="POST">';
         echo '<div class="blokGlownyDuzy"><h1>Wypożyczalnia Filmów</h1>';
         $con = new mysqli("127.0.0.1","root","","projekt");
         $res = $con->query("SELECT * FROM film");
@@ -17,16 +18,24 @@
 
         for($i=0;$i<count($cos22);$i++)
         {
-            echo '<div style="text-align: left">Id: '.$i.' Nazwa: '.$cos22[$i][1].' Typ: '.$cos22[$i][3].' Opis: '.$cos22[$i][2].'</div>';
+            echo '<div style="text-align: left">Id: '.$cos22[$i][0].' Nazwa: '.$cos22[$i][1].' Typ: '.$cos22[$i][3].' Opis: '.$cos22[$i][2].'<input type=checkbox name=zmienna'.$i.' value="'.$cos22[$i][0].'"></div>';
         }
-        echo '<br><a href="../index.php?page=1">Strona Glowna</a><div class="dol"><br>';
+        echo '<br><a href="../index.php?page=1">Strona Glowna</a><br><br><input type=submit value="Zaakceptuj"><div class="dol"><br>';
         $ile = (count($cos)/10)+1;
         for($i = 1; $i<$ile; $i++)
         {
             echo '<a href="movie-list.php?page='.$i.'">'.$i.'</a>';
         }
-        echo '</div></form>';
 
+        if($_POST!=null)
+        {
+            for($i=0;$i<count($_POST);$i++)
+            {
+                $sqlquery="UPDATE `film` SET `widocznosc` = 1 WHERE `film`.`id` = ".$_POST["zmienna".$i.""].";";
+                $con->query($sqlquery);
+            }
+        }
+        echo '</div></form>';
         echo '</div>';
     ?>
         </center>
