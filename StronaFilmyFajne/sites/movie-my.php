@@ -43,7 +43,7 @@
         $cos2 = $con->query("SELECT * FROM film LIMIT 10 OFFSET ".$offset."");
         $cos22 = $cos2->fetch_all();
 
-        for($i = 0; $i<count($cos12);$i++)
+        for($i = 0; $i<count($cos22);$i++)
         {
             if($_SESSION["id"]==$cos12[$i][0])
             {
