@@ -28,16 +28,16 @@
             {
             if($_POST["1"]=="usun")
             {
-                $sqlquery2 = "DELETE FROM `user_has_film` WHERE `user_has_film`.`film_id` = ".$cos[$_GET["id"]][0]."";
+                $sqlquery2 = "DELETE FROM `user_has_film` WHERE `user_has_film`.`film_id` = ".$cos5[0][0]."";
                 $con->query($sqlquery2);
 
-                $sqlquery = "DELETE FROM `film` WHERE `film`.`id` = ".$cos[$_GET["id"]][0]."";
+                $sqlquery = "DELETE FROM `film` WHERE `film`.`id` = ".$cos5[0][0]."";
                 $con->query($sqlquery);
                 header('location: ../index.php?page=1');
             }
             if($_POST["1"]=="ukryj")
             {
-                $sqlquery3 = "UPDATE `film` SET `widocznosc` = 0 WHERE `film`.`id` = ".$cos[$_GET["id"]][0].";";
+                $sqlquery3 = "UPDATE `film` SET `widocznosc` = 0 WHERE `film`.`id` = ".$cos5[0][0].";";
                 $con->query($sqlquery3);
                 header('location: ../index.php?page=1');
             }

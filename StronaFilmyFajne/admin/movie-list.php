@@ -20,7 +20,7 @@
         {
             echo '<div style="text-align: left">Id: '.$cos22[$i][0].' Nazwa: '.$cos22[$i][1].' Typ: '.$cos22[$i][3].' Opis: '.$cos22[$i][2].'<input type=checkbox name=zmienna'.$i.' value="'.$cos22[$i][0].'"></div>';
         }
-        echo '<br><a href="../index.php?page=1">Strona Glowna</a><br><br><input type=submit value="Zaakceptuj"><div class="dol"><br>';
+        echo '<br><input type=submit value="Zaakceptuj"><br><br><a href="../index.php?page=1">Strona Glowna</a><br><div class="dol"><br>';
         $ile = (count($cos)/10)+1;
         for($i = 1; $i<$ile; $i++)
         {
