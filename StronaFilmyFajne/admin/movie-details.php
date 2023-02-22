@@ -34,8 +34,9 @@
             }
             if($_POST["1"]=="ukryj")
             {
-                $sqlquery3 = "UPDATE `film` SET `widocznosc` = 0 WHERE `film`.`id` = ".$_GET["id"].";";
+                $sqlquery3 = "UPDATE `film` SET `widocznosc` = 0 WHERE `film`.`id` = ".$cos[$_GET["id"]][0].";";
                 $con->query($sqlquery3);
+                header('location: ../index.php?page=1');
             }
         }
         echo '</form>';
