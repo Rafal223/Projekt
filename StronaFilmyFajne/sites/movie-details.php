@@ -12,10 +12,13 @@
         $res = $con->query("SELECT * FROM film");
         $cos = $res->fetch_all();
 
+        $res5 = $con->query("SELECT * FROM film WHERE film.id=".$_GET["id"]."");
+        $cos5 = $res5->fetch_all();
+
         echo '<h1>Szczegóły:</h1>
-        <div class="details">Nazwa: '.$cos[$_GET["id"]][1].'<br>
-        Typ: '.$cos[$_GET["id"]][3].'<br>
-        Opis: '.$cos[$_GET["id"]][2].'<br>
+        <div class="details">Nazwa: '.$cos5[0][1].'<br>
+        Typ: '.$cos5[0][3].'<br>
+        Opis: '.$cos5[0][2].'<br>
         foto </div>';
         echo '<br><a href="../index.php?page=1">Strona Główna</a>';
         echo '</form>';

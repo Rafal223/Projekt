@@ -50,12 +50,12 @@
             echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].'<br>Typ: '.$cos22[$i][3].'<br> Opis: '.$cos22[$i][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
             if($_SESSION["admin"]==null)
             {
-               echo '<a href="sites/movie-details.php?id='.$i.'">Szczegóły</a>';
+               echo '<a href="sites/movie-details.php?id='.$cos22[$i][0].'">Szczegóły</a>';
             }
             if($_SESSION["admin"]==1)
             {
-                echo '<a href="sites/movie-details.php?id='.$i.'">Podgląd</a>';
-                echo '<a href="admin/movie-details.php?id='.$i.'">Szczegóły administratora</a>';
+                echo '<a href="sites/movie-details.php?id='.$cos22[$i][0].'">Podgląd</a>';
+                echo '<a href="admin/movie-details.php?id='.$cos22[$i][0].'">Szczegóły administratora</a>';
             }
             echo '</div></div><br>';
             }
