@@ -22,7 +22,7 @@
                 if($_POST['email']==$cos[$i][4] && $_POST['password']==$cos[$i][3] && $cos[$i][5]==0)
                 {
                     $_SESSION["email"] = $_POST['email'];
-                    $_SESSION["id"] = $i;
+                    $_SESSION["id"] = $i+1;
                     $_SESSION["admin"] = 0;
                     echo 'udalo sie zalogowac';
                     header("Location: ../index.php?page=1");

@@ -47,7 +47,7 @@
         {
             if($_SESSION["id"]==$cos12[$i][0])
             {
-            echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$cos12[$i][1]][1].'<br>Typ: '.$cos22[$cos12[$i][1]][3].'<br> Opis: '.$cos22[$cos12[$i][1]][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
+            echo '<div class="blok"><div class="lewy">Nazwa: '.$cos22[$i][1].'<br>Typ: '.$cos22[$i][3].'<br> Opis: '.$cos22[$i][2].'<br></div><div class="prawy">foto</div><div class="lewydol">';
                 if($_SESSION["admin"]==null)
                 {
                    echo '<a href="sites/movie-details.php?id='.$i.'">Szczegóły</a>';

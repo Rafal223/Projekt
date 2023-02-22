@@ -7,7 +7,6 @@
         <div class="blokGlowny">
     <?php
         include "../includes/header.php";
-        $con = new mysqli("127.0.0.1","root","","projekt");
         echo '<form method="POST">';
         $res = $con->query("SELECT * FROM film");
         $cos = $res->fetch_all();
@@ -25,10 +24,11 @@
         {
             if($_POST["nazwa"]!="" && $_POST["typ"]!="" && $_POST["opis"]!="")
             {
-                $sqlquery = "INSERT INTO `film` VALUES ('DEFAULT','".$_POST['nazwa']."', '".$_POST['opis']."','".$_POST['typ']."');";
+                $sqlquery = "INSERT INTO `film` VALUES ('NULL','".$_POST['nazwa']."', '".$_POST['opis']."','".$_POST['typ']."');";
                 $con->query($sqlquery);
+                $wartosc=$con->insert_id;
 
-                $sqlquery2 = "INSERT INTO `user_has_film` VALUES ('".$_SESSION["id"]."','DEFAULT');";
+                $sqlquery2 = "INSERT INTO `user_has_film` VALUES ('".$_SESSION["id"]."','".$wartosc."');";
                 $con->query($sqlquery2);
                 header('location: ../index.php?page=1');
             }
