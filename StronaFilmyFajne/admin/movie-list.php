@@ -27,12 +27,16 @@
             echo '<a href="movie-list.php?page='.$i.'">'.$i.'</a>';
         }
 
+        print_r($_POST);
         if($_POST!=null)
         {
-            for($i=0;$i<count($_POST);$i++)
+            for($i=0;$i<count($cos22);$i++)
             {
-                $sqlquery="UPDATE `film` SET `widocznosc` = 1 WHERE `film`.`id` = ".$_POST["zmienna".$i.""].";";
-                $con->query($sqlquery);
+                if(isset($_POST["zmienna".$i.""]))
+                {
+                    $sqlquery="UPDATE `film` SET `widocznosc` = 1 WHERE `film`.`id` = ".$_POST["zmienna".$i.""].";";
+                    $con->query($sqlquery);
+                }
             }
         }
         echo '</div></form>';
